@@ -1,0 +1,29 @@
+{
+  "name": "syslog-appender-pro",
+  "version": "1.0.0",
+  "description": "Syslog Appender for TCP/TLS/UDP connections",
+  "main": "index.js",
+  "scripts": {
+    "test": "DEBUG=* node test/test.js",
+    "build": "rm -rf dist && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/murtazamehmudji/syslog-appender-pro.git"
+  },
+  "keywords": [
+    "syslog"
+  ],
+  "author": "Murtaza Mehmudji",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/murtazamehmudji/syslog-appender-pro/issues"
+  },
+  "engines": {
+    "node": ">=v12.20.2 <15"
+  },
+  "homepage": "https://github.com/murtazamehmudji/syslog-appender-pro#readme",
+  "dependencies": {
+    "debug": "^4.3.1"
+  }
+}
