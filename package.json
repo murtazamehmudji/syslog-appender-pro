@@ -12,7 +12,14 @@
     "url": "git+https://github.com/murtazamehmudji/syslog-appender-pro.git"
   },
   "keywords": [
-    "syslog"
+    "syslog",
+    "logger",
+    "tools",
+    "syslog-client",
+    "syslog-logger",
+    "syslog-tls-appender",
+    "syslog-tcp-appender",
+    "syslog-udp-appender"
   ],
   "author": "Murtaza Mehmudji",
   "license": "MIT",
