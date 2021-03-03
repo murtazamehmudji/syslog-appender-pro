@@ -4,18 +4,15 @@
 ## Example
 
 ```
-const { syslog } = require('syslog-appender-pro');
-const ca = '/etc/ssl/CA.crt';
-const cert = '/etc/ssl/client.crt';
-const key = '/etc/ssl/client.key';
+const { Appender } = require('syslog-appender-pro');
 
 const main = async () => {
   {
-    const log = syslog({
+    const logger = Appender({
       defaultAppName: 'syslog-appender-pro',
-      caPath: ca,
-      certificatePath: cert,
-      keyPath: key,
+      caPath: '/etc/ssl/CA.crt',
+      certificatePath: '/etc/ssl/client.crt',
+      keyPath: '/etc/ssl/client.key',
       defaultStructuredData: {
         '8bf8cc10-4140-4c3e-a2b4-e6f5324f1aea@41058': {
           tag: 'tcp',
@@ -23,19 +20,23 @@ const main = async () => {
       },
       host: 'logs-01.loggly.com',
       port: 514,
-      protocol: 'tcp',
+      protocol: 'tcp'
     })
 
-    await log({
-      message: 'Works with tcp!',
-    })
+    logger.debug({message: 'Message from syslog-appender-pro!'})
+      .then((result) => {
+        console.log('Sent message on tcp');
+      })
+      .catch(err => {
+        console.log(err.message);
+      });
   }
   {
-    const log = syslog({
+    const log = Appender({
       defaultAppName: 'syslog-appender-pro',
-      caPath: ca,
-      certificatePath: cert,
-      keyPath: key,
+      caPath: '/etc/ssl/CA.crt',
+      certificatePath: '/etc/ssl/client.crt',
+      keyPath: '/etc/ssl/client.key',
       defaultStructuredData: {
         '8bf8cc10-4140-4c3e-a2b4-e6f5324f1aea@41058': {
           tag: 'tls',
@@ -43,12 +44,16 @@ const main = async () => {
       },
       host: 'logs-01.loggly.com',
       port: 6514,
-      protocol: 'tls',
+      protocol: 'tls'
     })
 
-    await log({
-      message: 'Works with tls!',
-    })
+    logger.debug({message: 'Message from syslog-appender-pro!'})
+      .then((result) => {
+        console.log('Sent message on tls');
+      })
+      .catch(err => {
+        console.log(err.message);
+      });
   }
 }
 
