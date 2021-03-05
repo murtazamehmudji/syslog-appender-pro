@@ -1,3 +1,1 @@
-const { Appender } = require('./lib/Appender');
-
-exports.Appender = Appender;
+module.exports = require('./lib/Appender');

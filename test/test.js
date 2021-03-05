@@ -1,4 +1,4 @@
-const { Appender } = require('../index');
+const { Appender, FACILITIES, PROTOCOLS, SEVERITIES } = require('../index');
 
 const ca = '/var/www/html/syslog-poc/certs/CA.crt';
 const cert = '/var/www/html/syslog-poc/certs/client.crt';
@@ -11,13 +11,13 @@ const logger = new Appender({
   keyPath: key,
   host: "localhost",
   port: 514,
-  protocol: 'tls4'
+  protocol: PROTOCOLS.UDP
 })
 
 var i = 0;
 setInterval(() => {
   if (i <= 1000) {
-    logger.debug({message: 'Message from syslog-tls-appender! ' + i++})
+    logger.debug({ message: 'Message from syslog-appender-pro! ' + i++ })
       .then((result) => {
         console.log('Logged ' + (i - 1));
       })
